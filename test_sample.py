@@ -40,3 +40,5 @@ class FirstSampleTest(unittest.TestCase):
         status = (sys.exc_info() == (None, None, None))
         sauce_client.jobs.update_job(self.driver.session_id, passed=status)
 
+if __name__ == '__main__':
+    unittest.main()
