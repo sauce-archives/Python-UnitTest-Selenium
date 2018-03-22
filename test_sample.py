@@ -1,7 +1,6 @@
 import os
 import unittest
 import sys
-import new
 from selenium import webdriver
 from sauceclient import SauceClient
 
@@ -13,13 +12,13 @@ class FirstSampleTest(unittest.TestCase):
     # setUp runs before each test case
     def setUp(self):
         desired_caps = {
-            "name": self.id(),
-            "platform": os.environ.get("platform"),
-            "browserName": os.environ.get("browserName"),
-            "version": os.environ.get("version")
+            "name": 'Py-unittest',
+            "platform": 'Windows 10',
+            "browserName": 'firefox',
+            "version": '47'
         }
         self.driver = webdriver.Remote(
-           command_executor="http://%s:%s@ondemand.saucelabs.com:80/wd/hub" % (username, access_key),
+           command_executor="http://{}:{}@ondemand.saucelabs.com:80/wd/hub".format(username, access_key),
            desired_capabilities= desired_caps)
 
     # verify google title
@@ -41,5 +40,3 @@ class FirstSampleTest(unittest.TestCase):
         status = (sys.exc_info() == (None, None, None))
         sauce_client.jobs.update_job(self.driver.session_id, passed=status)
 
-if __name__ == '__main__':
-    unittest.main()
