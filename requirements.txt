@@ -1,0 +1,5 @@
+selenium>2.5
+sauceclient
+pytest
+nose
+pytest-xdist

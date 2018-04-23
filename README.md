@@ -21,13 +21,30 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
 3. Project Dependencies
 	* Install packages (Use sudo if necessary)
 	```
-	$ pip install selenium sauceclient 
+	$ pip install -r requirements.txt 
 	```
 ### Running Tests
 
-Tests in Parallel:
+Tests in Series: One of
+       ```
+       $ python test_sample.py
+       ```
+or 
+       ```
+       $ nosetests test_sample.py
+       ```
+or
+       ```
+       $ pytest test_sample.py
+       ```
+
+Tests in Parallel: One of
 	```
-	$ make run_all_in_parallel
+	nosetests --processes=2 --process-timeout=120
+	```
+or
+	```
+	pytest -n2
 	```
 
 [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
